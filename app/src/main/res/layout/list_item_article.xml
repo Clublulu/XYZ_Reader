@@ -1,51 +1,53 @@
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="4dp"
-    android:layout_marginRight="4dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
-    android:clickable="true"
-    android:focusable="true"
-    android:foreground="?selectableItemBackground">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/list_item_outer_margin">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <com.example.xyzreader.ui.DynamicHeightNetworkImageView
+        android:id="@+id/thumbnail"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:background="@color/photo_placeholder"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/article_title"
+        style="@style/TextAppearance.AppCompat.Subhead"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:ellipsize="end"
+        android:maxLines="4"
+        android:layout_marginLeft="@dimen/list_item_text_margin"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        app:layout_constraintLeft_toRightOf="@id/thumbnail"
+        app:layout_constraintTop_toTopOf="@id/thumbnail"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="An Article Title" />
 
-        <!--suppress AndroidLintContentDescription -->
-        <com.example.xyzreader.ui.DynamicHeightNetworkImageView
-            android:id="@+id/thumbnail"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:background="@color/photo_placeholder" />
+    <TextView
+        android:id="@+id/article_subtitle"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/article_title"
+        app:layout_constraintLeft_toLeftOf="@id/article_title"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="An Article Subtitle by Cody Doctorow tomorrow" />
 
-        <TextView
-            android:id="@+id/article_title"
-            style="@style/TextAppearance.AppCompat.Subhead"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="4dp"
-            android:textColor="@color/ltgray"
-            android:ellipsize="end"
-            android:maxLines="4" />
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/list_item_margin_top"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/thumbnail" />
 
-        <TextView
-            android:id="@+id/article_subtitle"
-            style="@style/TextAppearance.AppCompat.Body1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingBottom="16dp"
-            android:textColor="#6000"
-            android:maxLines="2"
-            android:ellipsize="end" />
-    </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
